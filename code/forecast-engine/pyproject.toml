@@ -13,7 +13,7 @@ dependencies = [
   "pyarrow==21.0.0",
   "matplotlib==3.10.9",
   "pymysql==1.1.0",
-  "python-dotenv==1.0.0",
+  "python-dotenv==1.2.3",
   "PyYAML>=6,<7",
 ]
 
