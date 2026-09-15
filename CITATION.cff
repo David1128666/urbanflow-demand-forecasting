@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: >-
+  If you use UrbanFlow in academic work, please cite this repository.
+  如果您在学术工作中使用 UrbanFlow，请引用本仓库。
+title: "UrbanFlow: City Demand Forecasting and Dispatch Support Platform"
+type: software
+authors:
+  - name: "UrbanFlow Contributors"
+abstract: >-
+  An open-source MVP for city demand time-series forecasting using synthetic
+  data, Kafka, Spark, PyTorch, FastAPI, and Vue. 一个使用虚拟数据、
+  Kafka、Spark、PyTorch、FastAPI 和 Vue 构建的城市需求时序预测开源项目。
+keywords:
+  - time series forecasting
+  - urban demand
+  - Spark
+  - Kafka
+  - PyTorch
+  - FastAPI
+license: MIT
+version: 0.1.0
+date-released: "2026-09-10"
