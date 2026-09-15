@@ -1,5 +1,7 @@
 # UrbanFlow
 
+[![CI](https://github.com/David1128666/urbanflow-demand-forecasting/actions/workflows/ci.yml/badge.svg)](https://github.com/David1128666/urbanflow-demand-forecasting/actions/workflows/ci.yml)
+
 **An AI-assisted urban bike-demand forecasting and dispatch decision-support
 platform.**
 

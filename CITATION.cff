@@ -6,6 +6,7 @@ title: "UrbanFlow: City Demand Forecasting and Dispatch Support Platform"
 type: software
 authors:
   - name: "UrbanFlow Contributors"
+repository-code: "https://github.com/David1128666/urbanflow-demand-forecasting"
 abstract: >-
   An open-source MVP for city demand time-series forecasting using synthetic
   data, Kafka, Spark, PyTorch, FastAPI, and Vue. 一个使用虚拟数据、
