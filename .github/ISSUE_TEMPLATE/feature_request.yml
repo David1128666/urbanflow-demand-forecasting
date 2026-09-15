@@ -1,0 +1,43 @@
+name: "Feature request / 功能建议"
+description: "Suggest a scoped improvement for UrbanFlow / 提出范围明确的功能改进"
+title: "[Feature]: "
+labels:
+  - enhancement
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: "Problem / 问题"
+      description: "What user or engineering problem should be solved? / 需要解决什么用户或工程问题？"
+    validations:
+      required: true
+  - type: textarea
+    id: proposal
+    attributes:
+      label: "Proposed solution / 建议方案"
+      description: "Describe the smallest useful implementation. / 描述最小可用实现。"
+    validations:
+      required: true
+  - type: dropdown
+    id: phase
+    attributes:
+      label: "Proposed phase / 建议阶段"
+      options:
+        - MVP
+        - Post-MVP
+        - Unsure
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: "Alternatives considered / 备选方案"
+    validations:
+      required: false
+  - type: textarea
+    id: impact
+    attributes:
+      label: "Impact / 影响范围"
+      description: "Explain the effect on data, API, model, frontend, tests, or documentation. / 说明对数据、API、模型、前端、测试和文档的影响。"
+    validations:
+      required: true

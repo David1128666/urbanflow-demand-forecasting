@@ -1,0 +1,55 @@
+name: "Bug report / 错误报告"
+description: "Report a reproducible problem in UrbanFlow / 报告可复现的问题"
+title: "[Bug]: "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include passwords, private data, or security vulnerabilities in a public issue.
+  - type: textarea
+    id: description
+    attributes:
+      label: "Problem / 问题"
+      description: "What happened? / 发生了什么？"
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: "Reproduction steps / 复现步骤"
+      description: "Provide the smallest reproducible example. / 提供最小复现步骤。"
+      placeholder: |
+        1. Run ...
+        2. Open ...
+        3. Observe ...
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: "Version or commit / 版本或提交"
+      placeholder: main@abcdef1
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: "Environment / 环境"
+      description: "OS, Python, Java, Node.js, Docker, and relevant dependency versions. / 操作系统、Python、Java、Node.js、Docker 和相关依赖版本。"
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: "Expected behavior / 期望行为"
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: "Relevant logs / 相关日志"
+      render: shell
+    validations:
+      required: false

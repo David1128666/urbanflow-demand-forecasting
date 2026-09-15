@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "urbanflow-simulator"
+version = "0.1.0"
+description = "Virtual demand data generator for UrbanFlow"
+requires-python = ">=3.11"
+dependencies = [
+  "kafka-python==2.3.2",
+  "pymysql==1.1.0",
+  "python-dotenv==1.0.0",
+]
+
+[project.scripts]
+urbanflow-simulator = "simulator.cli:main"
+urbanflow-producer = "simulator.producer:main"
+urbanflow-load-mysql = "simulator.mysql_loader:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+include = ["simulator*"]

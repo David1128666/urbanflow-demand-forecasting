@@ -1,0 +1,101 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  repository-baseline:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Check repository and documentation baseline
+        run: python scripts/check_docs.py
+
+      - name: Validate demo pipeline plan
+        run: python code/scripts/run_demo.py --dry-run
+
+  python-skeleton:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install backend dependencies
+        run: python -m pip install -e ./code/backend
+
+      - name: Install forecast engine dependencies
+        run: python -m pip install -e "./code/forecast-engine[deep]"
+
+      - name: Install simulator dependencies
+        run: python -m pip install -e ./code/simulator
+
+      - name: Run backend tests
+        env:
+          PYTHONPATH: code/backend
+        run: python -m unittest discover -s code/backend/tests -v
+
+      - name: Run forecast engine tests
+        run: python -m unittest discover -s code/forecast-engine/tests -v
+
+      - name: Run simulator tests
+        run: python -m unittest discover -s code/simulator/tests -v
+
+      - name: Run project script tests
+        run: python -m unittest discover -s code/tests -v
+
+  frontend-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: code/frontend/package-lock.json
+
+      - name: Install frontend dependencies
+        working-directory: code/frontend
+        run: npm ci
+
+      - name: Build frontend
+        working-directory: code/frontend
+        run: npm run build
+
+      - name: Check frontend locale resources
+        working-directory: code/frontend
+        run: npm run check:locales
+
+  scala-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: "temurin"
+          java-version: "11"
+          cache: "maven"
+
+      - name: Compile and test Scala modules
+        run: mvn -f code/pom.xml test -q
